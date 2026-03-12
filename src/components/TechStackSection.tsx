@@ -16,7 +16,7 @@ const techs = [
   { icon: SiJavascript, name: "JavaScript", color: "#F7DF1E" },
   { icon: SiVite, name: "Vite", color: "#646CFF" },
   { icon: SiHtml5, name: "HTML5", color: "#E34F26" },
-  { icon: SiCss3, name: "CSS", color: "#1572B6" },
+  { icon: SiCss, name: "CSS", color: "#1572B6" },
   { icon: SiMui, name: "Material UI", color: "#007FFF" },
   { icon: SiAntdesign, name: "Ant Design", color: "#0170FE" },
   { icon: SiTailwindcss, name: "Tailwind", color: "#06B6D4" },
