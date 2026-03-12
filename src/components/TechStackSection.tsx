@@ -3,22 +3,28 @@ import { useRef } from "react";
 import {
   SiReact, SiNextdotjs, SiTypescript, SiJavascript,
   SiTailwindcss, SiNodedotjs, SiGit, SiFirebase,
-  SiMongodb, SiDocker, SiFigma, SiRedux,
+  SiVite, SiHtml5, SiCss, SiMui,
+  SiAntdesign, SiJest, SiAxios,
 } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 
 const techs = [
   { icon: SiReact, name: "React", color: "#61DAFB" },
   { icon: SiNextdotjs, name: "Next.js", color: "#FFFFFF" },
+  { icon: TbBrandReactNative, name: "React Native", color: "#61DAFB" },
   { icon: SiTypescript, name: "TypeScript", color: "#3178C6" },
   { icon: SiJavascript, name: "JavaScript", color: "#F7DF1E" },
+  { icon: SiVite, name: "Vite", color: "#646CFF" },
+  { icon: SiHtml5, name: "HTML5", color: "#E34F26" },
+  { icon: SiCss, name: "CSS", color: "#1572B6" },
+  { icon: SiMui, name: "Material UI", color: "#007FFF" },
+  { icon: SiAntdesign, name: "Ant Design", color: "#0170FE" },
   { icon: SiTailwindcss, name: "Tailwind", color: "#06B6D4" },
   { icon: SiNodedotjs, name: "Node.js", color: "#339933" },
-  { icon: SiRedux, name: "Redux", color: "#764ABC" },
-  { icon: SiGit, name: "Git", color: "#F05032" },
+  { icon: SiGit, name: "GitHub", color: "#F05032" },
   { icon: SiFirebase, name: "Firebase", color: "#FFCA28" },
-  { icon: SiMongodb, name: "MongoDB", color: "#47A248" },
-  { icon: SiDocker, name: "Docker", color: "#2496ED" },
-  { icon: SiFigma, name: "Figma", color: "#F24E1E" },
+  { icon: SiAxios, name: "Axios", color: "#5A29E4" },
+  { icon: SiJest, name: "Jest", color: "#C21325" },
 ];
 
 const TechStackSection = () => {

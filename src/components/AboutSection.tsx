@@ -21,26 +21,27 @@ const AboutSection = () => {
 
           <div className="glass rounded-xl p-8 md:p-12">
             <p className="text-muted-foreground leading-relaxed text-lg mb-6">
-              I'm a passionate Software Engineer specializing in building exceptional
-              digital experiences. With a strong foundation in{" "}
-              <span className="text-foreground font-medium">React</span>,{" "}
-              <span className="text-foreground font-medium">Next.js</span>, and{" "}
-              <span className="text-foreground font-medium">TypeScript</span>, I
-              create performant, scalable, and user-centric web applications.
+              Frontend Developer with around 2 years of experience building modern web
+              applications using{" "}
+              <span className="text-foreground font-medium">React.js</span> and{" "}
+              <span className="text-foreground font-medium">Next.js</span>. Proficient in{" "}
+              <span className="text-foreground font-medium">JavaScript</span> and{" "}
+              <span className="text-foreground font-medium">TypeScript</span>, with a
+              strong focus on writing clean, maintainable, and scalable code.
             </p>
             <p className="text-muted-foreground leading-relaxed text-lg">
-              I thrive on turning complex problems into elegant solutions. Whether
-              it's crafting pixel-perfect UIs, optimizing application performance,
-              or architecting robust frontend systems — I bring dedication and
-              attention to detail to every project I work on.
+              Experienced in developing reusable components, improving application
+              performance, and ensuring cross-device compatibility to deliver a smooth
+              user experience. I also leverage AI development tools to speed up
+              development, explore solutions, and improve productivity.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
               {[
                 { value: "2+", label: "Years Exp." },
-                { value: "10+", label: "Projects" },
-                { value: "5+", label: "Technologies" },
-                { value: "∞", label: "Curiosity" },
+                { value: "3+", label: "Projects" },
+                { value: "15+", label: "Technologies" },
+                { value: "2", label: "Awards" },
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}

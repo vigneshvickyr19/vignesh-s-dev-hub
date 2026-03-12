@@ -1,11 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
+import { Github, Linkedin, Mail, Phone, Send, MapPin } from "lucide-react";
 
 const socials = [
-  { icon: FiGithub, label: "GitHub", href: "https://github.com" },
-  { icon: FiLinkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: FiMail, label: "Email", href: "mailto:vignesh@example.com" },
+  { icon: Github, label: "GitHub", href: "https://github.com/vignesh", subtitle: "github.com/vignesh" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/vignesh", subtitle: "linkedin.com/in/vignesh" },
+  { icon: Mail, label: "Email", href: "mailto:vigneshr0819@gmail.com", subtitle: "vigneshr0819@gmail.com" },
+  { icon: Phone, label: "Phone", href: "tel:+917604999984", subtitle: "+91 7604999984" },
+  { icon: MapPin, label: "Location", href: "#", subtitle: "Chennai, India" },
 ];
 
 const ContactSection = () => {
@@ -34,7 +36,6 @@ const ContactSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-10">
-          {/* Left - Social links */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -45,12 +46,12 @@ const ContactSection = () => {
               opportunities. Feel free to reach out!
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {socials.map((s, i) => (
                 <motion.a
                   key={s.label}
                   href={s.href}
-                  target="_blank"
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, x: -20 }}
                   animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -58,16 +59,18 @@ const ContactSection = () => {
                   whileHover={{ x: 8 }}
                   className="flex items-center gap-4 p-4 glass rounded-lg group cursor-pointer"
                 >
-                  <s.icon className="text-xl text-muted-foreground group-hover:text-primary transition-colors" />
-                  <span className="text-foreground group-hover:text-primary transition-colors font-medium">
-                    {s.label}
-                  </span>
+                  <s.icon size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                  <div>
+                    <span className="text-foreground group-hover:text-primary transition-colors font-medium text-sm block">
+                      {s.label}
+                    </span>
+                    <span className="text-xs text-muted-foreground">{s.subtitle}</span>
+                  </div>
                 </motion.a>
               ))}
             </div>
           </motion.div>
 
-          {/* Right - Form */}
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}
@@ -110,7 +113,7 @@ const ContactSection = () => {
             >
               {sent ? "Message Sent! ✓" : (
                 <>
-                  Send Message <FiSend />
+                  Send Message <Send size={16} />
                 </>
               )}
             </motion.button>
