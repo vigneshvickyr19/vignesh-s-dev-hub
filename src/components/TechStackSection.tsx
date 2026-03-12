@@ -3,7 +3,7 @@ import { useRef } from "react";
 import {
   SiReact, SiNextdotjs, SiTypescript, SiJavascript,
   SiTailwindcss, SiNodedotjs, SiGit, SiFirebase,
-  SiVite, SiHtml5, SiCss3, SiMui,
+  SiVite, SiHtml5, SiCss, SiMui,
   SiAntdesign, SiJest, SiAxios,
 } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
