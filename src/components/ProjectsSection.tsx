@@ -1,24 +1,24 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with payment integration, inventory management, and responsive design.",
-    techs: ["React", "Next.js", "Stripe", "Tailwind"],
+    title: "Qatar",
+    description: "Developed scalable UI features using Next.js and TypeScript with reusable React components. Implemented internationalization (i18n) and interactive UI with Material UI and Framer Motion.",
+    techs: ["Next.js", "TypeScript", "i18n", "Material UI", "Framer Motion"],
     color: "from-primary/20 to-orange-900/20",
   },
   {
-    title: "Task Management App",
-    description: "Real-time collaborative task management with drag & drop, filtering, and team features.",
-    techs: ["TypeScript", "React", "Firebase", "Framer Motion"],
+    title: "AFS – AI Based",
+    description: "Built a web interface that allows users to ask questions and receive AI-generated answers. Developed UI components using Ant Design and managed global state with Context API.",
+    techs: ["React.js", "JavaScript", "Ant Design", "Context API"],
     color: "from-blue-500/20 to-cyan-900/20",
   },
   {
-    title: "Portfolio Dashboard",
-    description: "Analytics dashboard with interactive charts, dark mode, and customizable widgets.",
-    techs: ["Next.js", "Chart.js", "Tailwind", "Prisma"],
+    title: "HRMS",
+    description: "Developed HR modules for employee data, payroll, and reporting features. Implemented data visualization using Chart.js and organizational hierarchy views using D3 Org Chart.",
+    techs: ["Next.js", "TypeScript", "i18n", "Chart.js", "D3 Org Chart"],
     color: "from-purple-500/20 to-pink-900/20",
   },
 ];
@@ -51,7 +51,6 @@ const ProjectsSection = () => {
               whileHover={{ y: -8 }}
               className="glass rounded-xl overflow-hidden group"
             >
-              {/* Gradient header */}
               <div className={`h-40 bg-gradient-to-br ${project.color} flex items-center justify-center`}>
                 <span className="font-mono text-4xl text-primary/60 group-hover:text-primary transition-colors">
                   {"{ }"}
@@ -62,8 +61,8 @@ const ProjectsSection = () => {
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-lg font-bold text-foreground">{project.title}</h3>
                   <div className="flex gap-2 text-muted-foreground">
-                    <FiGithub className="hover:text-primary transition-colors cursor-pointer" />
-                    <FiExternalLink className="hover:text-primary transition-colors cursor-pointer" />
+                    <Github size={16} className="hover:text-primary transition-colors cursor-pointer" />
+                    <ExternalLink size={16} className="hover:text-primary transition-colors cursor-pointer" />
                   </div>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">

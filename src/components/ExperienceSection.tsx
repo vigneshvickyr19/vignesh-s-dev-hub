@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Award } from "lucide-react";
 
 const ExperienceSection = () => {
   const ref = useRef(null);
@@ -25,26 +26,25 @@ const ExperienceSection = () => {
           transition={{ delay: 0.3, duration: 0.5 }}
           className="relative pl-8 border-l-2 border-primary/30"
         >
-          {/* Timeline dot */}
           <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary glow-box" />
 
           <div className="glass rounded-xl p-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
               <div>
-                <h3 className="text-xl font-bold text-foreground">Software Engineer</h3>
-                <p className="text-primary font-medium">Company Name</p>
+                <h3 className="text-xl font-bold text-foreground">Software Developer</h3>
+                <p className="text-primary font-medium">Kryptos Info System Pvt. Ltd</p>
               </div>
               <span className="text-sm text-muted-foreground font-mono mt-2 md:mt-0">
-                2023 — Present
+                03/2024 — Present · Chennai
               </span>
             </div>
 
             <ul className="space-y-3 text-muted-foreground">
               {[
-                "Developed and maintained scalable React applications serving thousands of users",
-                "Implemented responsive designs and optimized performance achieving 95+ Lighthouse scores",
-                "Collaborated with cross-functional teams using Agile methodologies",
-                "Built reusable component libraries reducing development time by 40%",
+                "Developed modern web applications using React.js, Next.js, JavaScript, and TypeScript, focusing on clean architecture and reusable components.",
+                "Built an AI-enabled web application that allows users to ask questions and receive intelligent responses through an integrated AI model.",
+                "Contributed to the development of an HRMS platform actively used by client organizations, shaping features from concept to delivery.",
+                "Improved development efficiency by leveraging AI development tools to accelerate implementation, explore solutions, and optimize workflows.",
               ].map((item, i) => (
                 <motion.li
                   key={i}
@@ -60,7 +60,7 @@ const ExperienceSection = () => {
             </ul>
 
             <div className="flex flex-wrap gap-2 mt-6">
-              {["React", "TypeScript", "Next.js", "Tailwind CSS", "REST APIs"].map(
+              {["React", "Next.js", "TypeScript", "JavaScript", "Material UI", "Ant Design", "Context API"].map(
                 (tech) => (
                   <span
                     key={tech}
@@ -70,6 +70,67 @@ const ExperienceSection = () => {
                   </span>
                 )
               )}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Awards */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="mt-12"
+        >
+          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+            <Award size={20} className="text-primary" />
+            Awards
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            {[
+              {
+                title: "Rising Star",
+                date: "Apr 2024",
+                desc: "Awarded for outstanding performance, quick learning, and significant contributions to frontend development projects.",
+              },
+              {
+                title: "Pinnacle Performance",
+                date: "Oct 2024",
+                desc: "Awarded for outstanding contribution to the AFS AI-based application, delivering high-quality frontend features.",
+              },
+            ].map((award, i) => (
+              <motion.div
+                key={award.title}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.7 + i * 0.1 }}
+                className="glass rounded-xl p-6"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-bold text-foreground">{award.title}</h4>
+                  <span className="text-xs font-mono text-muted-foreground">{award.date}</span>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">{award.desc}</p>
+                <p className="text-xs text-primary font-mono mt-2">Kryptos Infosys</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Education */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="mt-12"
+        >
+          <h3 className="text-xl font-bold mb-6">Education</h3>
+          <div className="glass rounded-xl p-6">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+              <div>
+                <h4 className="font-bold text-foreground">Bachelor's Degree, BCA</h4>
+                <p className="text-sm text-muted-foreground">Thiruvalluvar University, Vellore · Tirupattur</p>
+              </div>
+              <span className="text-sm text-muted-foreground font-mono mt-2 md:mt-0">2020 — 2023</span>
             </div>
           </div>
         </motion.div>

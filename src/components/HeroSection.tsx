@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ArrowDown, Download } from "lucide-react";
 
 const codeLines = [
   { indent: 0, text: 'const Developer = () => {' },
@@ -17,12 +18,10 @@ const codeLines = [
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-center section-padding pt-28 relative overflow-hidden">
-      {/* Background glow */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
       <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[100px] animate-pulse-glow" />
 
       <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Left */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -41,21 +40,38 @@ const HeroSection = () => {
             Vignesh <span className="text-gradient">R</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-lg">
-            Software Engineer –{" "}
+          <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-lg">
+            Frontend Developer –{" "}
             <span className="text-foreground font-medium">React</span> &{" "}
             <span className="text-foreground font-medium">Next.js</span> Developer
           </p>
 
-          <motion.a
-            href="#about"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold text-sm glow-box hover:brightness-110 transition-all"
-          >
-            View More
-            <span className="text-lg">↓</span>
-          </motion.a>
+          <p className="text-sm text-muted-foreground mb-8 max-w-lg leading-relaxed">
+            Building modern, performant web applications with clean architecture and reusable components.
+          </p>
+
+          <div className="flex items-center gap-4 flex-wrap">
+            <motion.a
+              href="#about"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold text-sm glow-box hover:brightness-110 transition-all"
+            >
+              View More
+              <ArrowDown size={16} />
+            </motion.a>
+
+            <motion.a
+              href="/Vignesh_R_Resume.pdf"
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 border border-primary/50 text-primary px-8 py-3 rounded-lg font-semibold text-sm hover:bg-primary/10 transition-all"
+            >
+              Resume
+              <Download size={16} />
+            </motion.a>
+          </div>
         </motion.div>
 
         {/* Right - Code UI */}
@@ -66,7 +82,6 @@ const HeroSection = () => {
           className="hidden lg:block"
         >
           <div className="glass rounded-xl p-6 font-mono text-sm relative">
-            {/* Window dots */}
             <div className="flex gap-2 mb-4">
               <div className="w-3 h-3 rounded-full bg-red-500/80" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
