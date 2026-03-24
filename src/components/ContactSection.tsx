@@ -1,12 +1,11 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Github, Linkedin, Mail, Phone, Send, MapPin } from "lucide-react";
+import { Github, Linkedin, Mail, Send, MapPin } from "lucide-react";
 
 const socials = [
   { icon: Github, label: "GitHub", href: "https://github.com/vignesh", subtitle: "github.com/vignesh" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/vignesh", subtitle: "linkedin.com/in/vignesh" },
   { icon: Mail, label: "Email", href: "mailto:vigneshr0819@gmail.com", subtitle: "vigneshr0819@gmail.com" },
-  { icon: Phone, label: "Phone", href: "tel:+917604999984", subtitle: "+91 7604999984" },
   { icon: MapPin, label: "Location", href: "#", subtitle: "Chennai, India" },
 ];
 
