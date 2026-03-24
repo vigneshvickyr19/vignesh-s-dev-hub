@@ -116,24 +116,6 @@ const ExperienceSection = () => {
           </div>
         </motion.div>
 
-        {/* Education */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          className="mt-12"
-        >
-          <h3 className="text-xl font-bold mb-6">Education</h3>
-          <div className="glass rounded-xl p-6">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-              <div>
-                <h4 className="font-bold text-foreground">Bachelor's Degree, BCA</h4>
-                <p className="text-sm text-muted-foreground">Thiruvalluvar University, Vellore · Tirupattur</p>
-              </div>
-              <span className="text-sm text-muted-foreground font-mono mt-2 md:mt-0">2020 — 2023</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
