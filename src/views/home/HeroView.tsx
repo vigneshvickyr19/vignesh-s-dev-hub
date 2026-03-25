@@ -1,21 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
+import { CODE_LINES, HERO_CONTENT } from "@/constants";
+import { CodeHighlight } from "@/components/shared";
 
-const codeLines = [
-  { indent: 0, text: 'const Developer = () => {' },
-  { indent: 1, text: 'const [passion, setPassion] = useState("∞");' },
-  { indent: 1, text: 'const skills = ["React", "Next.js", "TypeScript"];' },
-  { indent: 1, text: '' },
-  { indent: 1, text: 'return (' },
-  { indent: 2, text: '<Portfolio>' },
-  { indent: 3, text: '<Code quality="production" />' },
-  { indent: 3, text: '<Innovation level={passion} />' },
-  { indent: 2, text: '</Portfolio>' },
-  { indent: 1, text: ');' },
-  { indent: 0, text: '};' },
-];
-
-const HeroSection = () => {
+// Hero Section with dynamic background effects and interactive code preview
+const HeroView = () => {
   return (
     <section className="min-h-screen flex items-center section-padding pt-28 relative overflow-hidden">
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
@@ -33,21 +22,21 @@ const HeroSection = () => {
             transition={{ delay: 0.2 }}
             className="text-primary font-mono text-sm mb-4 tracking-wider"
           >
-            {"// Hello World, I'm"}
+            {HERO_CONTENT.greeting}
           </motion.p>
 
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-4">
-            Vignesh <span className="text-gradient">R</span>
+            {HERO_CONTENT.name} <span className="text-gradient">{HERO_CONTENT.nameHighlight}</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-lg">
-            Frontend Developer –{" "}
-            <span className="text-foreground font-medium">React</span> &{" "}
-            <span className="text-foreground font-medium">Next.js</span> Developer
+            {HERO_CONTENT.titlePrefix}{" "}
+            <span className="text-foreground font-medium">{HERO_CONTENT.titleTech1}</span> &{" "}
+            <span className="text-foreground font-medium">{HERO_CONTENT.titleTech2}</span> Developer
           </p>
 
           <p className="text-sm text-muted-foreground mb-8 max-w-lg leading-relaxed">
-            Building modern, performant web applications with clean architecture and reusable components.
+            {HERO_CONTENT.subtitle}
           </p>
 
           <div className="flex items-center gap-4 flex-wrap">
@@ -62,7 +51,7 @@ const HeroSection = () => {
             </motion.a>
 
             <motion.a
-              href="/Vignesh_R_Resume.pdf"
+              href={HERO_CONTENT.resumePath}
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
@@ -86,10 +75,10 @@ const HeroSection = () => {
               <div className="w-3 h-3 rounded-full bg-red-500/80" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
               <div className="w-3 h-3 rounded-full bg-green-500/80" />
-              <span className="ml-3 text-muted-foreground text-xs">Developer.tsx</span>
+              <span className="ml-3 text-muted-foreground text-xs">{HERO_CONTENT.codeFileName}</span>
             </div>
 
-            {codeLines.map((line, i) => (
+            {CODE_LINES.map((line, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -10 }}
@@ -115,32 +104,4 @@ const HeroSection = () => {
   );
 };
 
-const CodeHighlight = ({ text }: { text: string }) => {
-  if (!text) return <br />;
-
-  const highlighted = text
-    .replace(/(const|return|useState)/g, '<kw>$1</kw>')
-    .replace(/(".*?")/g, '<str>$1</str>')
-    .replace(/(<\/?[A-Z]\w*>?)/g, '<tag>$1</tag>')
-    .replace(/(\/\/.*)/g, '<cmt>$1</cmt>');
-
-  const parts = highlighted.split(/(<kw>.*?<\/kw>|<str>.*?<\/str>|<tag>.*?<\/tag>|<cmt>.*?<\/cmt>)/g);
-
-  return (
-    <>
-      {parts.map((part, i) => {
-        if (part.startsWith('<kw>'))
-          return <span key={i} className="text-purple-400">{part.replace(/<\/?kw>/g, '')}</span>;
-        if (part.startsWith('<str>'))
-          return <span key={i} className="text-green-400">{part.replace(/<\/?str>/g, '')}</span>;
-        if (part.startsWith('<tag>'))
-          return <span key={i} className="text-primary">{part.replace(/<\/?tag>/g, '')}</span>;
-        if (part.startsWith('<cmt>'))
-          return <span key={i} className="text-muted-foreground">{part.replace(/<\/?cmt>/g, '')}</span>;
-        return <span key={i} className="text-foreground/80">{part}</span>;
-      })}
-    </>
-  );
-};
-
-export default HeroSection;
+export default HeroView;

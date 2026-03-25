@@ -1,15 +1,9 @@
+import { SOCIAL_LINKS } from "@/constants";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Github, Linkedin, Mail, Send, MapPin } from "lucide-react";
+import { Send } from "lucide-react";
 
-const socials = [
-  { icon: Github, label: "GitHub", href: "https://github.com/vignesh", subtitle: "github.com/vignesh" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/vignesh", subtitle: "linkedin.com/in/vignesh" },
-  { icon: Mail, label: "Email", href: "mailto:vigneshr0819@gmail.com", subtitle: "vigneshr0819@gmail.com" },
-  { icon: MapPin, label: "Location", href: "#", subtitle: "Chennai, India" },
-];
-
-const ContactSection = () => {
+const ContactView = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [sent, setSent] = useState(false);
@@ -41,12 +35,11 @@ const ContactSection = () => {
             transition={{ delay: 0.2 }}
           >
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              I'm always open to discussing new projects, creative ideas, or
-              opportunities. Feel free to reach out!
+              {"I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!"}
             </p>
 
             <div className="space-y-3">
-              {socials.map((s, i) => (
+              {SOCIAL_LINKS.map((s, i) => (
                 <motion.a
                   key={s.label}
                   href={s.href}
@@ -123,4 +116,4 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
+export default ContactView;

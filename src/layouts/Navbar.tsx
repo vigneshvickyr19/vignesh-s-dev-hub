@@ -1,14 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-
-const links = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Tech Stack", href: "#tech" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
-];
+import { NAV_LINKS } from "@/constants";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -27,7 +20,7 @@ const Navbar = () => {
 
         {/* Desktop */}
         <ul className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
+          {NAV_LINKS.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
@@ -58,7 +51,7 @@ const Navbar = () => {
             className="md:hidden overflow-hidden glass border-t border-border"
           >
             <ul className="flex flex-col gap-4 px-6 py-6">
-              {links.map((l) => (
+              {NAV_LINKS.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}

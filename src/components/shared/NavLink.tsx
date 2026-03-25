@@ -8,6 +8,8 @@ interface NavLinkCompatProps extends Omit<NavLinkProps, "className"> {
   pendingClassName?: string;
 }
 
+// Thin wrapper around react-router NavLink that accepts plain string classNames
+// instead of the function signature — keeps call-sites cleaner.
 const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
   ({ className, activeClassName, pendingClassName, to, ...props }, ref) => {
     return (
@@ -20,7 +22,7 @@ const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
         {...props}
       />
     );
-  },
+  }
 );
 
 NavLink.displayName = "NavLink";
