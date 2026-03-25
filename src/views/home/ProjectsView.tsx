@@ -3,13 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
 
-/** 
- * Individual Project Card with premium image animations.
- * Features:
- * - Parallax-style hover zoom on images
- * - Staggered tech tag entrance
- * - Dynamic glow borders on hover
- */
+// Project card with parallax hover and staggered entrance
 const ProjectCard = ({ project, i, inView }: { project: typeof PROJECTS[0]; i: number; inView: boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
 

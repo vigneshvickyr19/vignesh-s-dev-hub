@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import Layout from "@/layouts/Layout";
 
-// Lazy load views for better initial bundle size and performance (Code Splitting)
+// Code splitting for main homepage sections
 const HeroView = lazy(() => import("@/views/home/HeroView"));
 const AboutView = lazy(() => import("@/views/home/AboutView"));
 const ProjectsView = lazy(() => import("@/views/home/ProjectsView"));
@@ -9,7 +9,7 @@ const TechStackView = lazy(() => import("@/views/home/TechStackView"));
 const ExperienceView = lazy(() => import("@/views/home/ExperienceView"));
 const ContactView = lazy(() => import("@/views/home/ContactView"));
 
-/** Simple fallback loader for lazy-loaded components */
+// Placeholder during lazy loading
 const ViewFallback = () => <div className="h-20 animate-pulse bg-secondary/20 rounded-xl m-4" />;
 
 const Index = () => {

@@ -6,17 +6,14 @@ import { PATHS } from "./paths";
 const Index = lazy(() => import("@/pages/Index"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
-/** Simple route-level loading state */
+// Basic route loading fallback
 const RouteFallback = () => (
   <div className="h-screen w-full flex items-center justify-center bg-background">
      <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
   </div>
 );
 
-/**
- * Main application router configuration.
- * Using React.lazy with Suspense for code splitting at the route level.
- */
+// Main app routing with code splitting on pages
 const AppRouter = () => {
   return (
     <Suspense fallback={<RouteFallback />}>

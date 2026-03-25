@@ -3,7 +3,7 @@ import { ArrowDown, Download } from "lucide-react";
 import { CODE_LINES, HERO_CONTENT } from "@/constants";
 import { CodeHighlight } from "@/components/shared";
 
-// Hero Section with dynamic background effects and interactive code preview
+// Hero showing landing content and a terminal-style code card
 const HeroView = () => {
   return (
     <section className="min-h-screen flex items-center section-padding pt-28 relative overflow-hidden">

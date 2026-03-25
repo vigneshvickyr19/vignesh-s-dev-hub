@@ -48,9 +48,11 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground font-display antialiased;
-    scroll-behavior: smooth;
   }
   ::selection {
     background: hsl(24 100% 55% / 0.3);
