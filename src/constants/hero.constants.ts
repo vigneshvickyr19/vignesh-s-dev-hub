@@ -27,6 +27,6 @@ export const HERO_CONTENT = {
   titleTech2: "Next.js",
   subtitle:
     "Building modern, performant web applications with clean architecture and reusable components.",
-  resumePath: "/Vignesh_R_Resume.pdf",
+  resumePath: "/docs/Vignesh_Resume.pdf",
   codeFileName: "Developer.tsx",
 } as const;

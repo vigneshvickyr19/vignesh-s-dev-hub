@@ -116,7 +116,7 @@ const ProjectsView = () => {
           <div className="w-24 h-1.5 bg-primary rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {PROJECTS.map((project, i) => (
             <ProjectCard key={project.title} project={project} i={i} inView={inView} />
           ))}
