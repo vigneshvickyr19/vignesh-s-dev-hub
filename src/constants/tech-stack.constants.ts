@@ -14,8 +14,14 @@ import {
   SiAntdesign,
   SiJest,
   SiAxios,
+  SiReactquery,
+  SiRedux,
+  SiExpress,
+  SiJsonwebtokens,
+  SiChartdotjs,
 } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
+import { VscAzureDevops } from "react-icons/vsc";
 import type { IconType } from "react-icons";
 
 export interface Tech {
@@ -37,9 +43,15 @@ export const TECH_STACK: Tech[] = [
   { icon: SiMui, name: "Material UI", color: "#007FFF" },
   { icon: SiAntdesign, name: "Ant Design", color: "#0170FE" },
   { icon: SiTailwindcss, name: "Tailwind", color: "#06B6D4" },
+  { icon: SiReactquery, name: "TanStack", color: "#FF4154" },
+  { icon: SiChartdotjs, name: "Chart.js", color: "#FF6384" },
+  { icon: SiRedux, name: "Redux Toolkit", color: "#764ABC" },
   { icon: SiNodedotjs, name: "Node.js", color: "#339933" },
+  { icon: SiExpress, name: "Express", color: "#000000" },
   { icon: SiGit, name: "GitHub", color: "#F05032" },
+  { icon: VscAzureDevops, name: "Azure DevOps", color: "#0078D7" },
   { icon: SiFirebase, name: "Firebase", color: "#FFCA28" },
+  { icon: SiJsonwebtokens, name: "JWT", color: "#000000" },
   { icon: SiAxios, name: "Axios", color: "#5A29E4" },
   { icon: SiJest, name: "Jest", color: "#C21325" },
 ];

@@ -10,31 +10,31 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    title: "Qatar Living",
+    title: "Qatar",
     description:
-      "Developed scalable UI features using Next.js and TypeScript with reusable React components. Implemented internationalization (i18n) and interactive UI with Material UI and Framer Motion.",
-    techs: ["Next.js", "TypeScript", "i18n", "Material UI", "Framer Motion"],
+      "Developed scalable UI using reusable React components and implemented React Query for API caching. Built comments system, map integrations, and AI-based search functionality while improving performance through banner analytics tracking. Impact: Delivered high-performance platform with better user engagement and faster data loading.",
+    techs: ["Next.js", "TypeScript", "TanStack Query", "i18n", "Material UI", "Framer Motion"],
     color: "from-primary/20 to-orange-900/20",
     liveUrl: "https://www.qatarliving.com/",
     image: "/images/qatart_image.png",
   },
   {
-    title: "AFS – AI Based",
-    description:
-      "Built a web interface that allows users to ask questions and receive AI-generated answers. Developed UI components using Ant Design and managed global state with Context API.",
-    techs: ["React.js", "JavaScript", "Ant Design", "Context API"],
-    color: "from-blue-500/20 to-cyan-900/20",
-    liveUrl: "https://proud-beach-0f8a0190f.5.azurestaticapps.net/",
-    image: "/images/afs_image.jpeg",
-  },
-  {
     title: "HRMS",
     description:
-      "Developed HR modules for employee data, payroll, and reporting features. Implemented data visualization using Chart.js and organizational hierarchy views using D3 Org Chart.",
-    techs: ["Next.js", "TypeScript", "i18n", "Chart.js", "D3 Org Chart"],
+      "Developed employee, payroll, and reporting modules using React Query for server state management. Integrated Firebase Analytics and FCM push notifications, optimizing dashboard performance for large datasets. Impact: Improved workflow efficiency, real-time communication, and analytics tracking.",
+    techs: ["Next.js", "TypeScript", "Chart.js", "TanStack Query", "Firebase", "i18n"],
     color: "from-purple-500/20 to-pink-900/20",
     liveUrl: "https://hitayu.live/",
     image: "/images/hrms_image.jpeg",
+  },
+  {
+    title: "AFS – AI Based",
+    description:
+      "Built AI-powered UI for real-time Q&A interaction with efficient server-state management. Developed an admin analytics dashboard for tracking usage while optimizing API integration flows. Impact: Enhanced user engagement and enabled data-driven insights.",
+    techs: ["React.js", "JavaScript", "Ant Design", "TanStack Query"],
+    color: "from-blue-500/20 to-cyan-900/20",
+    liveUrl: "https://proud-beach-0f8a0190f.5.azurestaticapps.net/",
+    image: "/images/afs_image.jpeg",
   },
   {
     title: "MeAndYou",

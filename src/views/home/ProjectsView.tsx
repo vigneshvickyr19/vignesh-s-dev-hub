@@ -1,59 +1,81 @@
-import { PROJECTS } from "@/constants";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { PROJECTS, Project } from "@/constants";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Plus, Eye, Globe } from "lucide-react";
+import { ProjectModal } from "@/components/shared";
 
 // Project card with parallax hover and staggered entrance
-const ProjectCard = ({ project, i, inView }: { project: typeof PROJECTS[0]; i: number; inView: boolean }) => {
+const ProjectCard = ({ 
+  project, 
+  i, 
+  inView,
+  onOpenModal 
+}: { 
+  project: Project; 
+  i: number; 
+  inView: boolean;
+  onOpenModal: (project: Project) => void;
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.a
-      href={project.liveUrl}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.div
       key={project.title}
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: 0.1 + i * 0.12, duration: 0.7, ease: [0.21, 0.45, 0.32, 0.9] }}
-      whileHover={{ y: -8 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="glass rounded-xl overflow-hidden group cursor-pointer block relative h-full flex flex-col"
+      className="glass rounded-xl overflow-hidden group relative h-full flex flex-col border border-primary/5"
     >
-      {/* Glow Backdrop */}
+      {/* Background Glow */}
       <motion.div
-        className="absolute inset-0 rounded-xl opacity-0 pointer-events-none transition-opacity duration-500"
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        style={{ boxShadow: "0 0 40px hsl(var(--primary) / 0.15)" }}
+        className="absolute inset-x-0 -bottom-10 h-32 bg-primary/20 blur-[80px] pointer-events-none"
+        animate={{ opacity: isHovered ? 0.6 : 0 }}
       />
 
       {/* Image Header with Parallax Zoom */}
-      <div className="h-52 w-full overflow-hidden relative">
+      <div className="h-60 w-full overflow-hidden relative">
         <motion.div
-          animate={isHovered ? { scale: 1.15, y: -10 } : { scale: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          animate={isHovered ? { scale: 1.1, y: -5 } : { scale: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "circOut" }}
           className="h-full w-full"
         >
           <img 
             src={project.image} 
             alt={project.title} 
-            className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700" 
+            className="w-full h-full object-cover grayscale-[0.2] transition-all duration-700" 
           />
         </motion.div>
         
-        {/* Semi-transparent overlay for contrast */}
-        <div className={`absolute inset-0 bg-gradient-to-tr ${project.color} mix-blend-multiply opacity-60 group-hover:opacity-40 transition-opacity duration-500`} />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
+        {/* Overlays */}
+        <div className={`absolute inset-0 bg-gradient-to-tr ${project.color} mix-blend-multiply opacity-60 transition-opacity duration-500`} />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
 
-        <motion.div
-          className="absolute top-4 right-4 bg-primary/20 backdrop-blur-md rounded-full p-2.5 z-20 border border-white/10"
-          initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
-          animate={isHovered ? { opacity: 1, scale: 1, rotate: 0 } : { opacity: 0, scale: 0.5, rotate: -45 }}
-          transition={{ duration: 0.35, ease: "backOut" }}
-        >
-          <ArrowUpRight size={18} className="text-primary" />
-        </motion.div>
+        {/* Floating Icons Actions */}
+        <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
+          <motion.a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-xl glow-box border border-white/20"
+            title="View Live Site"
+          >
+            <Globe size={22} />
+          </motion.a>
+          
+          <motion.button
+            onClick={() => onOpenModal(project)}
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center shadow-xl border border-white/20"
+            title="View Details"
+          >
+            <Eye size={22} />
+          </motion.button>
+        </div>
       </div>
 
       <div className="p-6 relative flex flex-col flex-grow">
@@ -61,44 +83,51 @@ const ProjectCard = ({ project, i, inView }: { project: typeof PROJECTS[0]; i: n
           <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
             {project.title}
           </h3>
-          <ExternalLink size={16} className="text-muted-foreground opacity-50 group-hover:opacity-100 transition-opacity" />
+          <ArrowUpRight size={16} className="text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
         </div>
 
-        <p className="text-sm text-muted-foreground mb-6 leading-relaxed line-clamp-3">
+        <p className="text-sm text-muted-foreground mb-8 leading-relaxed line-clamp-3 font-medium">
           {project.description}
         </p>
 
-        <div className="mt-auto pt-4 border-t border-border/40">
-          <div className="flex flex-wrap gap-2">
-            {project.techs.map((tech, techIndex) => (
-              <motion.span
-                key={tech}
-                initial={{ opacity: 0, y: 10 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.4 + i * 0.1 + techIndex * 0.05 }}
-                className="text-[10px] uppercase tracking-wider font-mono bg-secondary/60 text-primary border border-primary/20 px-2 py-0.5 rounded-sm"
-              >
-                {tech}
-              </motion.span>
+        <div className="mt-auto pt-6 border-t border-primary/10 flex items-center justify-between">
+          <div className="flex -space-x-2">
+            {project.techs.slice(0, 4).map((tech, techIndex) => (
+               <div key={tech} className="w-7 h-7 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-[8px] font-bold text-primary shadow-sm" title={tech}>
+                 {tech.charAt(0)}
+               </div>
             ))}
+            {project.techs.length > 4 && (
+               <div className="w-7 h-7 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-[8px] font-bold text-primary">
+                 +{project.techs.length - 4}
+               </div>
+            )}
           </div>
+          
+          <button 
+            onClick={() => onOpenModal(project)}
+            className="text-[10px] uppercase font-mono tracking-widest font-bold text-primary hover:text-foreground transition-colors flex items-center gap-1.5"
+          >
+            See More Detail <Plus size={12} strokeWidth={3} />
+          </button>
         </div>
 
-        {/* Animated Accent Bar */}
+        {/* Bottom Line Finish */}
         <motion.div
-          className="absolute bottom-0 left-0 h-[3px] bg-primary"
+          className="absolute bottom-0 left-0 h-[3px] bg-primary group-hover:shadow-[0_0_10px_var(--primary)]"
           initial={{ width: "0%" }}
           animate={isHovered ? { width: "100%" } : { width: "0%" }}
           transition={{ duration: 0.6, ease: "circIn" }}
         />
       </div>
-    </motion.a>
+    </motion.div>
   );
 };
 
 const ProjectsView = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <section id="projects" className="section-padding overflow-hidden" ref={ref}>
@@ -109,19 +138,32 @@ const ProjectsView = () => {
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
-          <p className="text-primary text-sm font-mono mb-2 uppercase tracking-widest">Selected Works</p>
+          <p className="text-primary text-sm font-mono mb-2 uppercase tracking-widest">Portfolio Showcase</p>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
-            Featured <span className="text-gradient">Work</span>
+            Selected <span className="text-gradient">Innovations</span>
           </h2>
           <div className="w-24 h-1.5 bg-primary rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {PROJECTS.map((project, i) => (
-            <ProjectCard key={project.title} project={project} i={i} inView={inView} />
+            <ProjectCard 
+              key={project.title} 
+              project={project} 
+              i={i} 
+              inView={inView} 
+              onOpenModal={(p) => setSelectedProject(p)}
+            />
           ))}
         </div>
       </div>
+
+      {/* Global Project Detail Modal */}
+      <ProjectModal 
+        project={selectedProject} 
+        isOpen={selectedProject !== null} 
+        onClose={() => setSelectedProject(null)} 
+      />
     </section>
   );
 };
